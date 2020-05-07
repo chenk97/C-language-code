@@ -1,0 +1,97 @@
+==2375== Memcheck, a memory error detector
+==2375== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2375== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2375== Command: bin/bourse -p 9999
+==2375== Parent PID: 2363
+==2375== 
+==2375== Thread 3:
+==2375== Invalid read of size 4
+==2375==    at 0x10C2C2: trader_unref (trader.c:155)
+==2375==    by 0x10C238: trader_logout (trader.c:125)
+==2375==    by 0x10EDF2: brs_client_service (server.c:166)
+==2375==    by 0x4E436DA: start_thread (pthread_create.c:463)
+==2375==    by 0x517C88E: clone (clone.S:95)
+==2375==  Address 0x4 is not stack'd, malloc'd or (recently) free'd
+==2375== 
+==2375== 
+==2375== Process terminating with default action of signal 11 (SIGSEGV)
+==2375==  Access not within mapped region at address 0x4
+==2375==    at 0x10C2C2: trader_unref (trader.c:155)
+==2375==    by 0x10C238: trader_logout (trader.c:125)
+==2375==    by 0x10EDF2: brs_client_service (server.c:166)
+==2375==    by 0x4E436DA: start_thread (pthread_create.c:463)
+==2375==    by 0x517C88E: clone (clone.S:95)
+==2375==  If you believe this happened as a result of a stack
+==2375==  overflow in your program's main thread (unlikely but
+==2375==  possible), you can try to increase the size of the
+==2375==  main thread stack using the --main-stacksize= flag.
+==2375==  The main thread stack size used in this run was 8388608.
+==2375== 
+==2375== FILE DESCRIPTORS: 9 open at exit.
+==2375== Open AF_INET socket 6: 127.0.0.1:9999 <-> 127.0.0.1:43326
+==2375==    at 0x4E4D6D7: accept (accept.c:26)
+==2375==    by 0x10ACAB: Accept (csapp.c:419)
+==2375==    by 0x10A091: main (main.c:64)
+==2375== 
+==2375== Open AF_INET socket 5: 0.0.0.0:9999 <-> unbound
+==2375==    at 0x517DEC7: socket (syscall-template.S:78)
+==2375==    by 0x10B525: open_listenfd (csapp.c:767)
+==2375==    by 0x10B650: Open_listenfd (csapp.c:811)
+==2375==    by 0x10A05C: main (main.c:61)
+==2375== 
+==2375== Open file descriptor 13: /dev/shm/bxf_arena_2361 (deleted)
+==2375==    <inherited from parent>
+==2375== 
+==2375== Open file descriptor 12: /dev/shm/bxf_arena_2361 (deleted)
+==2375==    <inherited from parent>
+==2375== 
+==2375== Open file descriptor 4:
+==2375==    <inherited from parent>
+==2375== 
+==2375== Open file descriptor 3: /home/karin/jiarchen/hw5/valgrind.out
+==2375==    <inherited from parent>
+==2375== 
+==2375== Open file descriptor 2: /dev/pts/0
+==2375==    <inherited from parent>
+==2375== 
+==2375== Open file descriptor 1: /dev/pts/0
+==2375==    <inherited from parent>
+==2375== 
+==2375== Open file descriptor 0:
+==2375==    <inherited from parent>
+==2375== 
+==2375== 
+==2375== HEAP SUMMARY:
+==2375==     in use at exit: 1,048 bytes in 10 blocks
+==2375==   total heap usage: 11 allocs, 1 frees, 1,052 bytes allocated
+==2375== 
+==2375== Thread 1:
+==2375== 272 bytes in 1 blocks are possibly lost in loss record 9 of 10
+==2375==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2375==    by 0x40134A6: allocate_dtv (dl-tls.c:286)
+==2375==    by 0x40134A6: _dl_allocate_tls (dl-tls.c:530)
+==2375==    by 0x4E44227: allocate_stack (allocatestack.c:627)
+==2375==    by 0x4E44227: pthread_create@@GLIBC_2.2.5 (pthread_create.c:644)
+==2375==    by 0x10C738: exchange_init (exchange.c:51)
+==2375==    by 0x109FD9: main (main.c:42)
+==2375== 
+==2375== 272 bytes in 1 blocks are possibly lost in loss record 10 of 10
+==2375==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2375==    by 0x40134A6: allocate_dtv (dl-tls.c:286)
+==2375==    by 0x40134A6: _dl_allocate_tls (dl-tls.c:530)
+==2375==    by 0x4E44227: allocate_stack (allocatestack.c:627)
+==2375==    by 0x4E44227: pthread_create@@GLIBC_2.2.5 (pthread_create.c:644)
+==2375==    by 0x10ADAB: Pthread_create (csapp.c:465)
+==2375==    by 0x10A0C1: main (main.c:65)
+==2375== 
+==2375== LEAK SUMMARY:
+==2375==    definitely lost: 0 bytes in 0 blocks
+==2375==    indirectly lost: 0 bytes in 0 blocks
+==2375==      possibly lost: 544 bytes in 2 blocks
+==2375==    still reachable: 504 bytes in 8 blocks
+==2375==         suppressed: 0 bytes in 0 blocks
+==2375== Reachable blocks (those to which a pointer was found) are not shown.
+==2375== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==2375== 
+==2375== For counts of detected and suppressed errors, rerun with: -v
+==2375== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

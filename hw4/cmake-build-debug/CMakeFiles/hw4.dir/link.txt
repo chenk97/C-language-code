@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/hw4.dir/src/helper.c.o CMakeFiles/hw4.dir/src/jobs.c.o CMakeFiles/hw4.dir/src/main.c.o CMakeFiles/hw4.dir/src/sf_readline.c.o CMakeFiles/hw4.dir/src/task.c.o CMakeFiles/hw4.dir/tests/hw4_tests.c.o ../lib/sf_event.o  -o hw4 
